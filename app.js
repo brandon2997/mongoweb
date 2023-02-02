@@ -5,6 +5,8 @@ var bodyparser = require("body-parser")
 var mongoose =  require("mongoose")
 const { response } = require("express")
 var port = process.env.port||3000
+var db = require("./config/database")
+
 
 
 app.use(bodyparser.json())
@@ -13,7 +15,7 @@ app.use(bodyparser.urlencoded({extended:true}))
 
 app.use(express.json())
 
-mongoose.connect("mongodb://127.0.0.1:27017/gameEntries",{
+mongoose.connect(db.mongoURI,{
     useNewURLParser:true 
 }).then(function(){
     console.log("Connect to MongoDB Database")
