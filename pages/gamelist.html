@@ -30,21 +30,48 @@
                                 var deletebutton =document.createElement("button")
                                 deletebutton.innerText = "Delete Game"
                                 deletebutton.addEventListener("click",function(){
+                                    /*
                                     //fetch Request to server to delete the game
                                     location.reload()
-                                    fetch("/deleteGame", {
-                                        method:"POST",
-                                        headers:{
-                                            "Content-Type":"application/json"
-
+                                    */
+                                   fetch("/deleteGame", {
+                                       method:"POST",
+                                       headers:{
+                                           "Content-Type":"application/json"
+                                           
                                         },
                                         body:JSON.stringify({
                                             game:game
                                         })
                                     })
                                 })
-                                
                                 gameElement.appendChild(deletebutton)
+
+                                
+                                var updateButton = document.createElement("button")
+                                updateButton.innerText = "Update Game"
+                                updateButton.addEventListener("click",function(){
+                                    window.location.replace("/updatePage.html?id=" + game._id + "&name=" + game.game)
+                                    /*
+                                    //fetch Request to server to delete the game
+                                    location.reload()
+                                    fetch("/getID", {
+                                        method:"POST",
+                                        headers:{
+                                            "Content-Type":"application/json"
+                                            
+                                        },
+                                        body:JSON.stringify({
+                                            game:game
+                                        })
+                                    })
+                                    */
+                                })
+                                
+                                
+                                
+                                gameElement.appendChild(updateButton)
+                                
 
 
                             }

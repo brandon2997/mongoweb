@@ -55,6 +55,23 @@ app.get("/getGames",function(req,res){
     })
 })
 
+app.post("/updateGame", function(req,res){
+    console.log(req.body)
+
+    //res.redirect('gameList.html')
+    Game.findByIdAndUpdate(req.body.id, {game:req.body.game}, function(){
+    })
+    res.redirect("gamelist.html")
+    
+
+
+
+})
+app.post("/getID::id",function(req,res){
+    console.log(`game Upadate ${req.body.game._id}`)
+    res.redirect("updatePage.html?id:" + req.params.id)
+})
+
 app.post("/deleteGame",function(req,res){
     console.log(`game Deletes ${req.body.game._id}`)
         Game.findByIdAndDelete(req.body.game._id).exec()
