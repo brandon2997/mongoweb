@@ -6,6 +6,7 @@ var mongoose =  require("mongoose")
 const { response } = require("express")
 var port = process.env.port||3000
 var db = require("./config/database")
+const { create } = require("domain")
 
 
 
@@ -78,6 +79,28 @@ app.post("/deleteGame",function(req,res){
         res.redirect('gameList.html')
 })
 
+//unity
+app.post("/unity", function(req,res){
+    console.log("Hello from Unity");
+    var newData = {
+        "Level": req.body.level,
+        "timeElapsed": req.body.timeElapsed,
+        "name": req.body.name
+    }
+    console.log(newData);
+
+
+});
+
+app.get("/SendUnityData", function(req,res){
+    console.log("request made");
+    var dataToSend = {
+        "Level": 90000,
+        "timeElapsed": 2002.32,
+        "name": "George Saban"
+    }
+    res.send(dataToSend);
+})
 
 app.listen(port, function(){
         console.log(`Running on port ${port}`)
